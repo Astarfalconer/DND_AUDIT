@@ -1,0 +1,59 @@
+services:
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-dnd}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Amaterasu12!}
+      POSTGRES_DB: ${POSTGRES_DB:-dnd_audit}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./Database/init:/docker-entrypoint-initdb.d
+    networks:
+      - dnd_net
+
+  api:
+    build:
+      context: ./RuleEvalApi
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Postgres: Host=db;Port=5432;Database=${POSTGRES_DB:-dnd_audit};Username=${POSTGRES_USER:-dnd};Password=${POSTGRES_PASSWORD:-changeme}
+    ports:
+      - "5226:8080"
+    depends_on:
+      - db
+    networks:
+      - dnd_net
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5226
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - dnd_net
+
+  ai:
+    # Placeholder — swap in your AI service when ready (e.g. Ollama, Python FastAPI, etc.)
+    image: alpine:3.19
+    command: ["echo", "AI service not configured yet"]
+    networks:
+      - dnd_net
+
+volumes:
+  db_data:
+
+networks:
+  dnd_net:
+    driver: bridge

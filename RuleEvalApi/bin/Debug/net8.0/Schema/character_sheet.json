@@ -1,0 +1,14 @@
+{
+    "character_name": "Jon Wizard",
+    "Class": "Wizard",
+    "Level": 5,
+    "Background": "Sage",
+    "Attributes": {
+        "Strength": 8,
+        "Dexterity": 14,
+        "Constitution": 12,
+        "Intelligence": 18,
+        "Wisdom": 13,
+        "Charisma": 10
+    }
+}

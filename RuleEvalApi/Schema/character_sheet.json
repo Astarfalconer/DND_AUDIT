@@ -1,0 +1,14 @@
+{
+    "character_name": "Bad Stats McGee",
+    "Class": "Wizard",
+    "Level": 5,
+    "Background": "Urchin",
+    "Attributes": {
+        "Strength": 5,
+        "Dexterity": 6,
+        "Constitution": 7,
+        "Intelligence": 12,
+        "Wisdom": 6,
+        "Charisma": 4
+    }
+}

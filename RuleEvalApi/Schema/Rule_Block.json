@@ -1,0 +1,167 @@
+[
+  {
+    "RuleID": "IntelligenceLevelCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["Wizard"],
+    "Condition": { "Target": 14, "Operator": "<", "Path": "Attributes.Intelligence" },
+    "Result": {
+      "Pass": { "Message": "Intelligence is below the recommended level, consider increasing it." },
+      "Fail": { "Message": "Intelligence meets the recommended level." }
+    }
+  },
+  {
+    "RuleID": "DexterityLevelCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["Rogue", "Ranger", "Monk"],
+    "Condition": { "Target": 15, "Operator": "<", "Path": "Attributes.Dexterity" },
+    "Result": {
+      "Pass": { "Message": "Dexterity is below the recommended level, consider increasing it." },
+      "Fail": { "Message": "Dexterity meets the recommended level." }
+    }
+  },
+  {
+    "RuleID": "StrengthLevelCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["Fighter", "Barbarian", "Paladin"],
+    "Condition": { "Target": 15, "Operator": "<", "Path": "Attributes.Strength" },
+    "Result": {
+      "Pass": { "Message": "Strength is below the recommended level, consider increasing it." },
+      "Fail": { "Message": "Strength meets the recommended level." }
+    }
+  },
+  {
+    "RuleID": "WisdomLevelCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["Cleric", "Druid", "Ranger"],
+    "Condition": { "Target": 14, "Operator": "<", "Path": "Attributes.Wisdom" },
+    "Result": {
+      "Pass": { "Message": "Wisdom is below the recommended level, consider increasing it." },
+      "Fail": { "Message": "Wisdom meets the recommended level." }
+    }
+  },
+  {
+    "RuleID": "CharismaLevelCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["Bard", "Paladin", "Sorcerer", "Warlock"],
+    "Condition": { "Target": 14, "Operator": "<", "Path": "Attributes.Charisma" },
+    "Result": {
+      "Pass": { "Message": "Charisma is below the recommended level, consider increasing it." },
+      "Fail": { "Message": "Charisma meets the recommended level." }
+    }
+  },
+  {
+    "RuleID": "LevelCapCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 20, "Operator": ">", "Path": "Level" },
+    "Result": {
+      "Pass": { "Message": "Level exceeds the maximum of 20 — this character is invalid." },
+      "Fail": { "Message": "Level is within the valid range (1-20)." }
+    }
+  },
+  {
+    "RuleID": "ConstitutionFloorCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 8, "Operator": "<", "Path": "Attributes.Constitution" },
+    "Result": {
+      "Pass": { "Message": "Constitution is dangerously low. Expect very few hit points and high vulnerability to Con-based effects." },
+      "Fail": { "Message": "Constitution is within an acceptable range." }
+    }
+  },
+  {
+    "RuleID": "ConstitutionRecommendedCheck",
+    "Type": "Number",
+    "Severity": "warning",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 10, "Operator": "<", "Path": "Attributes.Constitution" },
+    "Result": {
+      "Pass": { "Message": "Constitution is below average. A score of at least 10 avoids negative HP modifiers per level." },
+      "Fail": { "Message": "Constitution meets the recommended minimum for a positive HP modifier." }
+    }
+  },
+  {
+    "RuleID": "WisdomFloorCheck",
+    "Type": "Number",
+    "Severity": "warning",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 8, "Operator": "<", "Path": "Attributes.Wisdom" },
+    "Result": {
+      "Pass": { "Message": "Wisdom is very low. Perception, Insight, and Wisdom saving throws will suffer significantly." },
+      "Fail": { "Message": "Wisdom is within an acceptable range." }
+    }
+  },
+  {
+    "RuleID": "DexterityFloorCheck",
+    "Type": "Number",
+    "Severity": "warning",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 8, "Operator": "<", "Path": "Attributes.Dexterity" },
+    "Result": {
+      "Pass": { "Message": "Dexterity is very low. Initiative, AC, and Dexterity saving throws will be penalised." },
+      "Fail": { "Message": "Dexterity is within an acceptable range." }
+    }
+  },
+  {
+    "RuleID": "StrengthFloorCheck",
+    "Type": "Number",
+    "Severity": "warning",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 6, "Operator": "<", "Path": "Attributes.Strength" },
+    "Result": {
+      "Pass": { "Message": "Strength is extremely low. Carrying capacity will be severely limited and some armour may be unwearable." },
+      "Fail": { "Message": "Strength is within an acceptable range." }
+    }
+  },
+  {
+    "RuleID": "CharismaFloorCheck",
+    "Type": "Number",
+    "Severity": "warning",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 6, "Operator": "<", "Path": "Attributes.Charisma" },
+    "Result": {
+      "Pass": { "Message": "Charisma is extremely low. Social interactions and Charisma saving throws will be very difficult." },
+      "Fail": { "Message": "Charisma is within an acceptable range." }
+    }
+  },
+  {
+    "RuleID": "StrengthCapCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 20, "Operator": ">", "Path": "Attributes.Strength" },
+    "Result": {
+      "Pass": { "Message": "Strength exceeds the standard ability score cap of 20. Verify this is intentional (e.g. Barbarian feature or magic item)." },
+      "Fail": { "Message": "Strength is within the standard ability score cap." }
+    }
+  },
+  {
+    "RuleID": "DexterityCapCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 20, "Operator": ">", "Path": "Attributes.Dexterity" },
+    "Result": {
+      "Pass": { "Message": "Dexterity exceeds the standard ability score cap of 20. Verify this is intentional." },
+      "Fail": { "Message": "Dexterity is within the standard ability score cap." }
+    }
+  },
+  {
+    "RuleID": "ConstitutionCapCheck",
+    "Type": "Number",
+    "Severity": "critical",
+    "AppliesTo": ["all"],
+    "Condition": { "Target": 20, "Operator": ">", "Path": "Attributes.Constitution" },
+    "Result": {
+      "Pass": { "Message": "Constitution exceeds the standard ability score cap of 20. Verify this is intentional." },
+      "Fail": { "Message": "Constitution is within the standard ability score cap." }
+    }
+  }
+]
