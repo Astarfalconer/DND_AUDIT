@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__Postgres: Host=db;Port=5432;Database=${POSTGRES_DB:-dnd_audit};Username=${POSTGRES_USER:-dnd};Password=${POSTGRES_PASSWORD:-changeme}
+      ConnectionStrings__Postgres: Host=db;Port=5432;Database=${POSTGRES_DB:-dnd_audit};Username=${POSTGRES_USER:-dnd};Password=${POSTGRES_PASSWORD:-Amaterasu12!}
     ports:
       - "5226:8080"
     depends_on:
@@ -32,7 +32,7 @@ services:
 
   frontend:
     build:
-      context: ./Frontend
+      context: ./frontend
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:

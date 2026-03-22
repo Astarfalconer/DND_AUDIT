@@ -72,11 +72,11 @@ public class Evaluator
         }
     }
 
-    public void Evaluate()
+    public void Evaluate(string sheetData)
     {
         Results.Clear();
         var loadedRules = LoadRules("Schema/Rule_Block.json");
-        JsonElement sampleData = JsonSerializer.Deserialize<JsonElement>(File.ReadAllText("Schema/character_sheet.json"))!;
+        JsonElement sampleData = JsonSerializer.Deserialize<JsonElement>(sheetData)!;
 
         foreach (var rule in loadedRules)
         {
